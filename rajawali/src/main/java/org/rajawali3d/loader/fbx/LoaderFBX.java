@@ -387,7 +387,7 @@ public class LoaderFBX extends AMeshLoader {
 		}
 
 		o.setData(convertFloats(vertices), convertFloats(normals), hasUVs ? convertFloats(uvs) : null, null,
-            convertIntegers(indices), false);
+				convertIntegersToShorts(indices), false);
 
 		vertices.clear();
 		vertices = null;
@@ -420,6 +420,17 @@ public class LoaderFBX extends AMeshLoader {
 	        ret[i] = integers.get(i).intValue();
 	    }
 	    return ret;
+	}
+
+	public static short[] convertIntegersToShorts(List<Integer> integers)
+	{
+		short[] ret = new short[integers.size()];
+		int len = ret.length;
+		for (int i=0; i < len; ++i)
+		{
+			ret[i] = (short) integers.get(i).intValue();
+		}
+		return ret;
 	}
 
 	public static float[] convertFloats(List<Float> floats)

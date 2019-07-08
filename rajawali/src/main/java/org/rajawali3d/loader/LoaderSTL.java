@@ -200,9 +200,9 @@ public class LoaderSTL extends AMeshLoader {
 		vertices.clear();
 		normals.clear();
 
-		int[] indicesArr = new int[verticesArr.length / 3];
+		short[] indicesArr = new short[verticesArr.length / 3];
 		for (i = 0; i < indicesArr.length; i++)
-			indicesArr[i] = i;
+			indicesArr[i] = (short) i;
 
 		mRootObject.setData(verticesArr, normalsArr, null, null, indicesArr, false);
 	}
@@ -225,12 +225,12 @@ public class LoaderSTL extends AMeshLoader {
 
 		float[] verticesArr = new float[facetCount * 9];
 		float[] normalsArr = new float[facetCount * 9];
-		int[] indicesArr = new int[facetCount * 3];
+		short[] indicesArr = new short[facetCount * 3];
 		float[] tempNorms = new float[3];
 		int vertPos = 0, normPos = 0;
 
 		for (int i = 0; i < indicesArr.length; i++)
-			indicesArr[i] = i;
+			indicesArr[i] = (short) i;
 
 		// Read all the facets
 		while (dis.available() > 0) {

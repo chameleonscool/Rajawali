@@ -227,7 +227,7 @@ public final class LensFlarePlugin extends Plugin {
         float[] textureCoords = new float[numVertices];
         float[] normals = new float[numVertices * 3];
 		float[] colors = new float[numVertices * 4];
-        int[] indices = new int[6];
+        short[] indices = new short[6];
         int vertexCount = 0;
         int texCoordCount = 0;
 

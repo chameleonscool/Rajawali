@@ -139,7 +139,7 @@ public abstract class Plugin implements IRendererPlugin {
         mGeometry.validateBuffers();
     }
 
-	protected void setData(float[] vertices, float[] normals, float[] textureCoords, float[] colors, int[] indices, boolean createVBOs) {
+	protected void setData(float[] vertices, float[] normals, float[] textureCoords, float[] colors, short[] indices, boolean createVBOs) {
 		mGeometry.setData(vertices, normals, textureCoords, colors, indices, createVBOs);
 	}
 

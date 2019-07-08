@@ -140,7 +140,8 @@ public class Geometry3D {
         mBuffers.get(COLOR_BUFFER_KEY).target = GLES20.GL_ARRAY_BUFFER;
 
         mBuffers.get(INDEX_BUFFER_KEY).rajawaliHandle = INDEX_BUFFER_KEY;
-        mBuffers.get(INDEX_BUFFER_KEY).bufferType = BufferType.INT_BUFFER;
+//        mBuffers.get(INDEX_BUFFER_KEY).bufferType = BufferType.INT_BUFFER;
+        mBuffers.get(INDEX_BUFFER_KEY).bufferType = BufferType.SHORT_BUFFER;
         mBuffers.get(INDEX_BUFFER_KEY).target = GLES20.GL_ELEMENT_ARRAY_BUFFER;
     }
 
@@ -353,7 +354,7 @@ public class Geometry3D {
      * @see VertexAnimationObject3D
      */
     public void setData(BufferInfo vertexBufferInfo, BufferInfo normalBufferInfo,
-                        float[] textureCoords, float[] colors, int[] indices, boolean createVBOs) {
+                        float[] textureCoords, float[] colors, short[] indices, boolean createVBOs) {
         if (textureCoords == null || textureCoords.length == 0) {
             textureCoords = new float[(mNumVertices / 3) * 2];
         }
@@ -389,7 +390,7 @@ public class Geometry3D {
      * @see GLES20#GL_STATIC_DRAW
      */
     public void setData(float[] vertices, float[] normals,
-                        float[] textureCoords, float[] colors, int[] indices, boolean createVBOs) {
+                        float[] textureCoords, float[] colors, short[] indices, boolean createVBOs) {
         setData(vertices, GLES20.GL_STATIC_DRAW, normals, GLES20.GL_STATIC_DRAW, textureCoords,
                 GLES20.GL_STATIC_DRAW, colors, GLES20.GL_STATIC_DRAW, indices, GLES20.GL_STATIC_DRAW, createVBOs);
     }
@@ -441,7 +442,7 @@ public class Geometry3D {
      */
     public void setData(float[] vertices, int verticesUsage, float[] normals, int normalsUsage,
                         float[] textureCoords, int textureCoordsUsage, float[] colors, int colorsUsage,
-                        int[] indices, int indicesUsage, boolean createVBOs) {
+                        short[] indices, int indicesUsage, boolean createVBOs) {
         mBuffers.get(VERTEX_BUFFER_KEY).usage = verticesUsage;
         mBuffers.get(NORMAL_BUFFER_KEY).usage = normalsUsage;
         mBuffers.get(TEXTURE_BUFFER_KEY).usage = textureCoordsUsage;
@@ -809,6 +810,10 @@ public class Geometry3D {
         setIndices(indices, false);
     }
 
+    public void setIndices(short[] indices) {
+        setIndices(indices, false);
+    }
+
     public void setIndices(int[] indices, boolean override) {
         final BufferInfo indexInfo = mBuffers.get(INDEX_BUFFER_KEY);
         if (indexInfo.buffer == null || override == true) {
@@ -819,6 +824,19 @@ public class Geometry3D {
             mNumIndices = indices.length;
         } else {
             ((IntBuffer) indexInfo.buffer).put(indices);
+        }
+    }
+
+    public void setIndices(short[] indices, boolean override) {
+        final BufferInfo indexInfo = mBuffers.get(INDEX_BUFFER_KEY);
+        if (indexInfo.buffer == null || override == true) {
+            indexInfo.buffer = ByteBuffer.allocateDirect(indices.length * SHORT_SIZE_BYTES)
+                    .order(ByteOrder.nativeOrder()).asShortBuffer();
+            ((ShortBuffer) indexInfo.buffer).put(indices).position(0);
+
+            mNumIndices = indices.length;
+        } else {
+            ((ShortBuffer) indexInfo.buffer).put(indices);
         }
     }
 

@@ -207,7 +207,7 @@ public class TerrainGenerator {
 		float[] nors = new float[(divisions + 1) * (divisions + 1) * 3];
 		float[] colors = new float[(divisions + 1) * (divisions + 1) * 4];
 		float[] textureCoords = new float[(divisions + 1) * (divisions + 1) * 2];
-		int[] indices = new int[(divisions) * (divisions) * 6];
+		short[] indices = new short[(divisions) * (divisions) * 6];
 		int ii = 0;
 		int nn = 0;
 		int tt = 0;
@@ -315,37 +315,37 @@ public class TerrainGenerator {
 				// |E\|/H| \|/ |
 				// O--O--O--O--O
 				// A
-				indices[xx++] = (i) + (j) * cols;
-				indices[xx++] = (i + 1) + (j) * cols;
-				indices[xx++] = (i) + (j + 1) * cols;
+				indices[xx++] = (short) ((i) + (j) * cols);
+				indices[xx++] = (short) ((i + 1) + (j) * cols);
+				indices[xx++] = (short) ((i) + (j + 1) * cols);
 				// B
-				indices[xx++] = (i + 1) + (j) * cols;
-				indices[xx++] = (i + 1) + (j + 1) * cols;
-				indices[xx++] = (i) + (j + 1) * cols;
+				indices[xx++] = (short) ((i + 1) + (j) * cols);
+				indices[xx++] = (short) ((i + 1) + (j + 1) * cols);
+				indices[xx++] = (short) ((i) + (j + 1) * cols);
 				// C
-				indices[xx++] = (i + 1) + (j) * cols;
-				indices[xx++] = (i + 2) + (j + 1) * cols;
-				indices[xx++] = (i + 1) + (j + 1) * cols;
+				indices[xx++] = (short) ((i + 1) + (j) * cols);
+				indices[xx++] = (short) ((i + 2) + (j + 1) * cols);
+				indices[xx++] = (short) ((i + 1) + (j + 1) * cols);
 				// D
-				indices[xx++] = (i + 1) + (j) * cols;
-				indices[xx++] = (i + 2) + (j) * cols;
-				indices[xx++] = (i + 2) + (j + 1) * cols;
+				indices[xx++] = (short) ((i + 1) + (j) * cols);
+				indices[xx++] = (short) ((i + 2) + (j) * cols);
+				indices[xx++] = (short) ((i + 2) + (j + 1) * cols);
 				// E
-				indices[xx++] = (i) + (j + 1) * cols;
-				indices[xx++] = (i + 1) + (j + 2) * cols;
-				indices[xx++] = (i) + (j + 2) * cols;
+				indices[xx++] = (short) ((i) + (j + 1) * cols);
+				indices[xx++] = (short) ((i + 1) + (j + 2) * cols);
+				indices[xx++] = (short) ((i) + (j + 2) * cols);
 				// F
-				indices[xx++] = (i) + (j + 1) * cols;
-				indices[xx++] = (i + 1) + (j + 1) * cols;
-				indices[xx++] = (i + 1) + (j + 2) * cols;
+				indices[xx++] = (short) ((i) + (j + 1) * cols);
+				indices[xx++] = (short) ((i + 1) + (j + 1) * cols);
+				indices[xx++] = (short) ((i + 1) + (j + 2) * cols);
 				// G
-				indices[xx++] = (i + 1) + (j + 1) * cols;
-				indices[xx++] = (i + 2) + (j + 1) * cols;
-				indices[xx++] = (i + 1) + (j + 2) * cols;
+				indices[xx++] = (short) ((i + 1) + (j + 1) * cols);
+				indices[xx++] = (short) ((i + 2) + (j + 1) * cols);
+				indices[xx++] = (short) ((i + 1) + (j + 2) * cols);
 				// H
-				indices[xx++] = (i + 2) + (j + 1) * cols;
-				indices[xx++] = (i + 2) + (j + 2) * cols;
-				indices[xx++] = (i + 1) + (j + 2) * cols;
+				indices[xx++] = (short) ((i + 2) + (j + 1) * cols);
+				indices[xx++] = (short) ((i + 2) + (j + 2) * cols);
+				indices[xx++] = (short) ((i + 1) + (j + 2) * cols);
 
 			}
 

@@ -126,7 +126,7 @@ public class Sphere extends Object3D {
 
 		float[] vertices = new float[numVertices * 3];
 		float[] normals = new float[numVertices * 3];
-		int[] indices = new int[numIndices];
+		short[] indices = new short[numIndices];
 
 		int i, j;
 		int vertIndex = 0, index = 0;
@@ -156,20 +156,20 @@ public class Sphere extends Object3D {
 					int d = (mSegmentsW + 1) * (j - 1) + i;
 
 					if (j == mSegmentsH) {
-						indices[index++] = a;
-						indices[index++] = c;
-						indices[index++] = d;
+						indices[index++] = (short) a;
+						indices[index++] = (short) c;
+						indices[index++] = (short) d;
 					} else if (j == 1) {
-						indices[index++] = a;
-						indices[index++] = b;
-						indices[index++] = c;
+						indices[index++] = (short) a;
+						indices[index++] = (short) b;
+						indices[index++] = (short) c;
 					} else {
-						indices[index++] = a;
-						indices[index++] = b;
-						indices[index++] = c;
-						indices[index++] = a;
-						indices[index++] = c;
-						indices[index++] = d;
+						indices[index++] = (short) a;
+						indices[index++] = (short) b;
+						indices[index++] = (short) c;
+						indices[index++] = (short) a;
+						indices[index++] = (short) c;
+						indices[index++] = (short) d;
 					}
 				}
 			}

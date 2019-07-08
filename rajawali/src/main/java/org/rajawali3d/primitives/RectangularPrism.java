@@ -178,7 +178,7 @@ public class RectangularPrism extends Object3D {
 				0, -n, 0, 0, -n, 0, 0, -n, 0, 0, -n, 0, // bottom
 		};
 
-		int[] indices = {
+		short[] indices = {
 				0, 1, 2, 0, 2, 3,
 				4, 5, 6, 4, 6, 7,
 				8, 9, 10, 8, 10, 11,

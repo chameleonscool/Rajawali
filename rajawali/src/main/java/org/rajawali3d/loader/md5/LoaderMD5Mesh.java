@@ -282,7 +282,7 @@ public class LoaderMD5Mesh extends AMeshLoader implements IAnimatedMeshLoader {
 			int boneIndex = 0;
 			SkeletonMeshData mesh = mMeshes[i];
 			mesh.vertices = new float[mesh.numVertices * 3];
-			mesh.indices = new int[mesh.numWeights];
+			mesh.indices = new short[mesh.numWeights];
 			mesh.weights = new float[mesh.numWeights];
 			mesh.textureCoordinates = new float[mesh.numVertices * 2];
 
@@ -302,7 +302,7 @@ public class LoaderMD5Mesh extends AMeshLoader implements IAnimatedMeshLoader {
 					pos.multiply(weight.weightValue);
 					position.add(pos);
 
-					mesh.indices[boneIndex] = weight.jointIndex;
+					mesh.indices[boneIndex] = (short) weight.jointIndex;
 					mesh.weights[boneIndex++] = weight.weightValue;
 				}
 
@@ -323,14 +323,14 @@ public class LoaderMD5Mesh extends AMeshLoader implements IAnimatedMeshLoader {
 			SkeletonMeshData mesh = mMeshes[i];
 			int numTriangles = mesh.numTriangles;
 
-			mesh.indices = new int[numTriangles * 3];
+			mesh.indices = new short[numTriangles * 3];
 			int index = 0;
 
 			for (int j = 0; j < numTriangles; ++j) {
 				int[] triangle = mesh.triangles[j];
-				int index0 = triangle[0];
-				int index1 = triangle[2];
-				int index2 = triangle[1];
+				short index0 = (short) triangle[0];
+				short index1 = (short) triangle[2];
+				short index2 = (short) triangle[1];
 
 				mesh.indices[index++] = index0;
 				mesh.indices[index++] = index1;
@@ -470,7 +470,7 @@ public class LoaderMD5Mesh extends AMeshLoader implements IAnimatedMeshLoader {
 		public int[][] triangles;
 		public float[] vertices;
 		public float[] normals;
-		public int[] indices;
+		public short[] indices;
 		public float[] textureCoordinates;
 		public float[] weights;
 

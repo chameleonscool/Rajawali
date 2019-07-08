@@ -64,7 +64,7 @@ public class WorkaroundScreenQuad extends Object3D {
                 0, 0, 1,
                 0, 0, 1
         };
-        int[] indices = new int[]{0, 2, 1, 0, 3, 2};
+        short[] indices = new short[]{0, 2, 1, 0, 3, 2};
 
         setData(vertices, normals, textureCoords, null, indices, createVBOs);
 

@@ -48,7 +48,7 @@ public class LoaderMD2 extends AMeshLoader implements IAnimatedMeshLoader {
 	private Bitmap mTexture;
 	private VertexAnimationObject3D mObject;
 	private float[][] mFrameVerts;
-	private int[] mIndices;
+	private short[] mIndices;
 	private float[] mTextureCoords;
 
 	public LoaderMD2(Renderer renderer, String fileOnSDCard) {
@@ -251,7 +251,7 @@ public class LoaderMD2 extends AMeshLoader implements IAnimatedMeshLoader {
 				mHeader.offsetTriangles - 68, bytes.length
 						- mHeader.offsetTriangles);
 		LittleEndianDataInputStream is = new LittleEndianDataInputStream(ba);
-		int[] indices = new int[mHeader.numTriangles * 3];
+		short[] indices = new short[mHeader.numTriangles * 3];
 		int[] uvIndices = new int[mHeader.numTriangles * 3];
 		int index = 0, uvIndex = 0;
 

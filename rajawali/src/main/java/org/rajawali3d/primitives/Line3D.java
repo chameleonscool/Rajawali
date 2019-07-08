@@ -117,7 +117,7 @@ public class Line3D extends Object3D {
 		int numVertices = mPoints.size();
 		
 		float[] vertices = new float[numVertices * 3];
-		int[] indices = new int[numVertices];
+		short[] indices = new short[numVertices];
 		float[] colors = null;
 		
 		if(mColors != null)

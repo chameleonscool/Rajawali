@@ -126,7 +126,7 @@ public class NPrism extends Object3D {
 		float[] normals = new float[3*vertex_count];
 		float[] texture = new float[2*vertex_count];
 		float[] colors = new float[4*vertex_count];
-		int[] indices = new int[3*tri_count];
+		short[] indices = new short[3*tri_count];
 		
 		double angle_delta = 2*Math.PI/mSideCount;
 
@@ -187,9 +187,9 @@ public class NPrism extends Object3D {
             normals[mNormalIndex + 8] = (float) temp_normal.z;
             texture[mTextureIndex + 4] = (float) Math.cos(angle0 + side * angle_delta);
             texture[mTextureIndex + 5] = 0.0f;
-            indices[indexIndex] = indexIndex;
-            indices[indexIndex + 1] = indexIndex + 1;
-            indices[indexIndex + 2] = indexIndex + 2;
+            indices[indexIndex] = (short) indexIndex;
+            indices[indexIndex + 1] = (short) (indexIndex + 1);
+            indices[indexIndex + 2] = (short) (indexIndex + 2);
             indexIndex += 3;
             ++triangle;
 
@@ -233,9 +233,9 @@ public class NPrism extends Object3D {
             normals[mNormalIndex + 8] = (float) temp_normal.z;
             texture[mTextureIndex + 4] = (float) Math.cos(angle0 + (side + 1) * angle_delta);
             texture[mTextureIndex + 5] = 0.0f;
-            indices[indexIndex] = indexIndex;
-            indices[indexIndex + 1] = indexIndex + 1;
-            indices[indexIndex + 2] = indexIndex + 2;
+            indices[indexIndex] = (short) indexIndex;
+            indices[indexIndex + 1] = (short) (indexIndex + 1);
+            indices[indexIndex + 2] = (short) (indexIndex + 2);
             indexIndex += 3;
             ++triangle;
 
@@ -280,9 +280,9 @@ public class NPrism extends Object3D {
             normals[mNormalIndex + 8] = (float) temp_normal.z;
             texture[mTextureIndex + 4] = (float) Math.cos(angle0 + side * angle_delta);
             texture[mTextureIndex + 5] = 1.0f;
-            indices[indexIndex] = indexIndex;
-            indices[indexIndex + 1] = indexIndex + 1;
-            indices[indexIndex + 2] = indexIndex + 2;
+            indices[indexIndex] = (short) indexIndex;
+            indices[indexIndex + 1] = (short) (indexIndex + 1);
+            indices[indexIndex + 2] = (short) (indexIndex + 2);
             indexIndex += 3;
             ++triangle;
 
@@ -327,9 +327,9 @@ public class NPrism extends Object3D {
             normals[mNormalIndex + 8] = (float) temp_normal.z;
             texture[mTextureIndex + 4] = (float) Math.cos(angle0 + side * angle_delta);
             texture[mTextureIndex + 5] = 0.0f;
-            indices[indexIndex] = indexIndex;
-            indices[indexIndex + 1] = indexIndex + 1;
-            indices[indexIndex + 2] = indexIndex + 2;
+            indices[indexIndex] = (short) indexIndex;
+            indices[indexIndex + 1] = (short) (indexIndex + 1);
+            indices[indexIndex + 2] = (short) (indexIndex + 2);
             indexIndex += 3;
             ++triangle;
 		}

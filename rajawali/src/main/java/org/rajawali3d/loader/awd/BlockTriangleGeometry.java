@@ -106,7 +106,7 @@ public class BlockTriangleGeometry extends ABaseObjectBlockParser {
 
 			// Geometry
 			float[] vertices = null;
-			int[] indices = null;
+			short[] indices = null;
 			float[] uvs = null;
 			float[] normals = null;
 
@@ -139,11 +139,11 @@ public class BlockTriangleGeometry extends ABaseObjectBlockParser {
 					}
 					break;
 				case 2: // Face indices
-					indices = new int[(int) (subLength / 2)];
+					indices = new short[(int) (subLength / 2)];
 					while (idx < indices.length) {
-                        indices[idx+2] = dis.readUnsignedShort();
-                        indices[idx+1] = dis.readUnsignedShort();
-                        indices[idx] = dis.readUnsignedShort();
+                        indices[idx+2] = (short) dis.readUnsignedShort();
+                        indices[idx+1] = (short) dis.readUnsignedShort();
+                        indices[idx] = (short) dis.readUnsignedShort();
                         idx += 3;
                     }
 					break;
@@ -191,7 +191,7 @@ public class BlockTriangleGeometry extends ABaseObjectBlockParser {
 			if (uvs == null)
 				uvs = new float[0];
 			if (indices == null)
-				indices = new int[0];
+				indices = new short[0];
 
 			// FIXME This should be combining sub geometry not creating objects
 			if(joints != null && joints.length > 0)

@@ -59,7 +59,7 @@ public class LauncherActivity extends AppCompatActivity {
                     Toast.makeText(
                             this,
                             "Cannot continue running Rajawali Examples without all required permissions.",
-                            Toast.LENGTH_SHORT
+                            Toast.LENGTH_LONG
                     ).show();
 
                     finish();

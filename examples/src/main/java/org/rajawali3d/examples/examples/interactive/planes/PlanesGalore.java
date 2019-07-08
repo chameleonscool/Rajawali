@@ -64,7 +64,7 @@ public class PlanesGalore extends Object3D {
 		float[] planePositions = new float[numVertices * 3];
 		float[] rotationSpeeds = new float[numVertices];
 		float[] colors = new float[numVertices * 4];
-		int[] indices = new int[numPlanes * 6];
+		short[] indices = new short[numPlanes * 6];
 
 		for (int i = 0; i < numPlanes; ++i) {
 			Vector3 r = new Vector3(-10f + (Math.random() * 20f), -10 + (Math.random() * 20f), (Math.random() * 80f));

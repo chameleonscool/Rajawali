@@ -176,7 +176,7 @@ public class ScreenQuad extends Object3D {
 		float[] colors = null;
 		if (mCreateVertexColorBuffer)
 			colors = new float[numVertices * 4];
-		int[] indices = new int[mSegmentsW * mSegmentsH * 6];
+		short[] indices = new short[mSegmentsW * mSegmentsH * 6];
 		int vertexCount = 0;
 		int texCoordCount = 0;
 
@@ -221,13 +221,13 @@ public class ScreenQuad extends Object3D {
 				int ur = (col + 1) * colspan + row;
 				int lr = ur + 1;
 
-				indices[indexCount++] = ur;
-				indices[indexCount++] = lr;
-				indices[indexCount++] = ul;
+				indices[indexCount++] = (short) ur;
+				indices[indexCount++] = (short) lr;
+				indices[indexCount++] = (short) ul;
 
-				indices[indexCount++] = lr;
-				indices[indexCount++] = ll;
-				indices[indexCount++] = ul;
+				indices[indexCount++] = (short) lr;
+				indices[indexCount++] = (short) ll;
+				indices[indexCount++] = (short) ul;
 			}
 		}
 

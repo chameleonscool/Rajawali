@@ -109,11 +109,11 @@ public class UpdateVertexBufferFragment extends AExampleFragment {
 			//
 
 			float[] vertices = new float[NUM_VERTICES * 3];
-			int[] indices = new int[NUM_VERTICES];
+			short[] indices = new short[NUM_VERTICES];
 			float[] colors = new float[NUM_VERTICES * 4];
 
 			for (int i = 0; i < NUM_VERTICES; i++) {
-				indices[i] = i;
+				indices[i] = (short) i;
 				int index = i * 4;
 				colors[index] = (float) Math.random();
 				colors[index + 1] = (float) Math.random();

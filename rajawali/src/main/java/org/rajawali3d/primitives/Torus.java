@@ -78,7 +78,7 @@ public class Torus extends Object3D {
 
 		float[] vertices = new float[numVertices * 3];
 		float[] normals = new float[numVertices * 3];
-		int[] indices = new int[numIndices];
+		short[] indices = new short[numIndices];
 
 		int i, j;
 		int vertIndex = 0, index = 0;
@@ -108,12 +108,12 @@ public class Torus extends Object3D {
 					int c = (mSegmentsS + 1) * (j - 1) + i - 1;
 					int d = (mSegmentsS + 1) * (j - 1) + i;
 
-					indices[index++] = a;
-					indices[index++] = c;
-					indices[index++] = b;
-					indices[index++] = a;
-					indices[index++] = d;
-					indices[index++] = c;
+					indices[index++] = (short) a;
+					indices[index++] = (short) c;
+					indices[index++] = (short) b;
+					indices[index++] = (short) a;
+					indices[index++] = (short) d;
+					indices[index++] = (short) c;
 				}
 			}
 		}

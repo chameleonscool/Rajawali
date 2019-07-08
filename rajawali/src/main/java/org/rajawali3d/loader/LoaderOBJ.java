@@ -310,7 +310,7 @@ public class LoaderOBJ extends AMeshLoader {
 			float[] aTexCoords 	= new float[oid.texCoordIndices.size() * 2];
 			float[] aNormals 	= new float[oid.normalIndices.size() * 3];
 			float[] aColors		= new float[oid.colorIndices.size() * 4];
-			int[] aIndices 		= new int[oid.vertexIndices.size()];
+			short[] aIndices 		= new short[oid.vertexIndices.size()];
 
 			for(i=0; i<oid.vertexIndices.size(); ++i) {
 				int faceIndex = oid.vertexIndices.get(i) * 3;
@@ -319,7 +319,7 @@ public class LoaderOBJ extends AMeshLoader {
 					aVertices[vertexIndex] = vertices.get(faceIndex);
 					aVertices[vertexIndex+1] = vertices.get(faceIndex + 1);
 					aVertices[vertexIndex+2] = vertices.get(faceIndex + 2);
-					aIndices[i] = i;
+					aIndices[i] = (short) i;
 				} catch(ArrayIndexOutOfBoundsException e) {
 					RajLog.d("Obj array index out of bounds: " + vertexIndex + ", " + faceIndex);
 				}

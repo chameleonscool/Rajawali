@@ -243,7 +243,7 @@ public class SkeletalAnimationChildObject3D extends AAnimationObject3D {
 		mInverseZScale = value;
 	}
 
-	public void setData(float[] vertices, float[] normals, float[] textureCoords, float[] colors, int[] indices, boolean createVBOs)
+	public void setData(float[] vertices, float[] normals, float[] textureCoords, float[] colors, short[] indices, boolean createVBOs)
 	{
 		setData
 		(

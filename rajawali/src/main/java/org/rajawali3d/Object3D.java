@@ -15,6 +15,8 @@ package org.rajawali3d;
 import android.graphics.Color;
 import android.opengl.GLES20;
 import android.support.annotation.NonNull;
+import android.util.Log;
+
 import org.rajawali3d.bounds.BoundingBox;
 import org.rajawali3d.bounds.IBoundingVolume;
 import org.rajawali3d.cameras.Camera;
@@ -122,7 +124,7 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
      * @param createVBOs       A boolean controlling if the VBOs are create immediately.
      */
     public void setData(BufferInfo vertexBufferInfo, BufferInfo normalBufferInfo, float[] textureCoords,
-                        float[] colors, int[] indices, boolean createVBOs) {
+                        float[] colors, short[] indices, boolean createVBOs) {
         mGeometry.setData(vertexBufferInfo, normalBufferInfo, textureCoords, colors, indices, createVBOs);
         mIsContainerOnly = false;
         mElementsBufferType = GLES20.GL_UNSIGNED_INT;
@@ -138,7 +140,7 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
      * @param indices       An integer array containing face indices
      * @param createVBOs    A boolean controlling if the VBOs are create immediately.
      */
-    public void setData(float[] vertices, float[] normals, float[] textureCoords, float[] colors, int[] indices,
+    public void setData(float[] vertices, float[] normals, float[] textureCoords, float[] colors, short[] indices,
                         boolean createVBOs) {
         setData(vertices, GLES20.GL_STATIC_DRAW, normals, GLES20.GL_STATIC_DRAW, textureCoords, GLES20.GL_STATIC_DRAW,
                 colors, GLES20.GL_STATIC_DRAW, indices, GLES20.GL_STATIC_DRAW, createVBOs);
@@ -146,7 +148,7 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
 
     public void setData(float[] vertices, int verticesUsage, float[] normals, int normalsUsage, float[] textureCoords,
                         int textureCoordsUsage,
-                        float[] colors, int colorsUsage, int[] indices, int indicesUsage, boolean createVBOs) {
+                        float[] colors, int colorsUsage, short[] indices, int indicesUsage, boolean createVBOs) {
         mGeometry.setData(vertices, verticesUsage, normals, normalsUsage, textureCoords, textureCoordsUsage, colors,
                           colorsUsage, indices, indicesUsage, createVBOs);
         mIsContainerOnly = false;
@@ -250,6 +252,7 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
             }
 
             GLES20.glDepthMask(mEnableDepthMask);
+            checkGlError("after glDepthMask");
 
             if (!mIsPartOfBatch) {
                 if (material == null) {
@@ -295,18 +298,24 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
             material.applyParams();
 
             GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);
+            checkGlError("after bindbuffer");
 
             material.setMVPMatrix(mMVPMatrix);
             material.setModelMatrix(mMMatrix);
             material.setInverseViewMatrix(mInverseViewMatrix);
             material.setModelViewMatrix(mMVMatrix);
+            checkGlError("after set matrix");
 
             if (mIsVisible) {
                 int bufferType = mGeometry.getIndexBufferInfo().bufferType == Geometry3D.BufferType.SHORT_BUFFER
                                  ? GLES20.GL_UNSIGNED_SHORT : GLES20.GL_UNSIGNED_INT;
                 GLES20.glBindBuffer(GLES20.GL_ELEMENT_ARRAY_BUFFER, mGeometry.getIndexBufferInfo().bufferHandle);
+                checkGlError("after bindbuffer");
+                Log.d("Object3D", "mDrawingMode " + mDrawingMode + ", mGeometry.getNumIndices() " + mGeometry.getNumIndices() + ", bufferType " + bufferType);
                 GLES20.glDrawElements(mDrawingMode, mGeometry.getNumIndices(), bufferType, 0);
+                checkGlError("after draw element");
                 GLES20.glBindBuffer(GLES20.GL_ELEMENT_ARRAY_BUFFER, 0);
+                checkGlError("after bindbuffer");
             }
             if (!mIsPartOfBatch && !mRenderChildrenAsBatch && sceneMaterial == null) {
                 material.unbindTextures();

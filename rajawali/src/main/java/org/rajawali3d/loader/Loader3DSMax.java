@@ -183,7 +183,7 @@ public class Loader3DSMax extends AMeshLoader {
             float[] aVertices = new float[len * 3];
             float[] aNormals = new float[len * 3];
             float[] aTexCoords = new float[len * 2];
-            int[] aIndices = new int[len];
+            short[] aIndices = new short[len];
 
             int ic = 0;
             int itn = 0;
@@ -205,21 +205,21 @@ public class Loader3DSMax extends AMeshLoader {
                 aVertices[ic++] = (float) coord.y;
                 aVertices[ic++] = (float) coord.z;
 
-                aIndices[ivi] = ivi++;
+                aIndices[ivi] = (short) ivi++;
 
                 coord = vertices.get(v2);
                 aVertices[ic++] = (float) coord.x;
                 aVertices[ic++] = (float) coord.y;
                 aVertices[ic++] = (float) coord.z;
 
-                aIndices[ivi] = ivi++;
+                aIndices[ivi] = (short) ivi++;
 
                 coord = vertices.get(v3);
                 aVertices[ic++] = (float) coord.x;
                 aVertices[ic++] = (float) coord.y;
                 aVertices[ic++] = (float) coord.z;
 
-                aIndices[ivi] = ivi++;
+                aIndices[ivi] = (short) ivi++;
 
                 if (texCoords != null && texCoords.size() > 0) {
                     texcoord = texCoords.get(v1);
