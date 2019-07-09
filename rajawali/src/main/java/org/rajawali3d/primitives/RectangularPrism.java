@@ -15,6 +15,7 @@ package org.rajawali3d.primitives;
 import org.rajawali3d.Object3D;
 
 /**
+ * 长方体 qian add
  * A rectangular prism primitive. The constructor takes two boolean arguments that indicate whether
  * certain buffers should be created or not. Not creating these buffers can reduce memory footprint.
  * <p>

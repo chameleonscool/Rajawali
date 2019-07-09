@@ -16,6 +16,7 @@ import org.rajawali3d.Object3D;
 import org.rajawali3d.math.vector.Vector3;
 
 /**
+ * N面体 qian add
  * Basic primitive allowing for the creation of an n-sided regular
  * polygonal cone, as a frustum or to a point with a specified slant
  * angle or aspect ratio. The cone is created about the positive
