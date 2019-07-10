@@ -63,7 +63,9 @@ public class FragmentShader extends AShader {
 	{
 		super.initialize();
 
-		addPrecisionQualifier(DataType.FLOAT, Precision.HIGHP);
+//		addPrecisionQualifier(DataType.FLOAT, Precision.HIGHP);
+		addPreprocessorDirective("#ifdef GL_FRAGMENT_PRECISION_HIGH\nprecision highp float;\n"
+				+ "#else\nprecision mediump float;\n#endif\n");
 
 		// -- uniforms
 

@@ -89,8 +89,8 @@ public class VertexShader extends AShader {
         super.initialize();
 
         //addPrecisionQualifier(DataType.FLOAT, Precision.MEDIUMP);
-        addPreprocessorDirective("#ifdef GL_FRAGMENT_PRECISION_HIGH\n\rprecision highp float;\n\r"
-                                 + "#else\n\rprecision mediump float;\n\r#endif\n\r");
+        addPreprocessorDirective("#ifdef GL_FRAGMENT_PRECISION_HIGH\nprecision highp float;\n"
+                                 + "#else\nprecision mediump float;\n#endif\n");
 
         // -- uniforms
 
