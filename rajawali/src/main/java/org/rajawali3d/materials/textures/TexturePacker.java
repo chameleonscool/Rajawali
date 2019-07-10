@@ -230,6 +230,7 @@ public class TexturePacker{
 				checkPOT(atlasPage, "Atlas Page "+pageNum);
 				root = new Node(0,0, mAtlasWidth, mAtlasHeight);
 				pageNum++;
+				--i;
 			}
 			tile.setPage(pageNum);
 		}
